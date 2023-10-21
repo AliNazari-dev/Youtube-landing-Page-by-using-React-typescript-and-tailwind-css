@@ -5,23 +5,15 @@ import { BiVideoPlus } from "react-icons/bi";
 import { BsBell, BsFillMicFill as Mic, BsSearch as Search } from "react-icons/bs";
 import { FaArrowLeftLong as BackIcon } from "react-icons/fa6";
 import { useState } from "react";
+import { useSidebarContext } from "../context/SidebarContext";
 
 const PageHeader = () => {
   const [showFullWidthSearch, setShowFullWidthSearch] = useState(false);
+
   return (
     <div className='gap-10 flex lg:gap-20 justify-between pt-2 mb-6 mx-4'>
       {/* Left side section */}
-      <div
-        className={`flex gap-4 items-center flex-shrink-0 ${
-          showFullWidthSearch ? "hidden" : "flex"
-        }`}>
-        <Button variant={"ghost"} className=''>
-          <AiOutlineMenu />
-        </Button>
-        <a href=''>
-          <img src={logo} alt='logo' className='h-6 ' />
-        </a>
-      </div>
+      <PageHeaderFirstSection hidden={showFullWidthSearch} />
       <form
         className={`flex-grow gap-4 justify-center ${
           showFullWidthSearch ? "flex" : "hidden md:flex"
@@ -76,3 +68,21 @@ const PageHeader = () => {
 };
 
 export default PageHeader;
+
+type PageHeaderFirstSectionProps = {
+  hidden?: boolean;
+};
+
+export function PageHeaderFirstSection({ hidden = false }: PageHeaderFirstSectionProps) {
+  const { toggle } = useSidebarContext();
+  return (
+    <div className={`flex gap-4 items-center flex-shrink-0 ${hidden ? "hidden" : "flex"}`}>
+      <Button variant={"ghost"} size={"icon"} onClick={toggle}>
+        <AiOutlineMenu />
+      </Button>
+      <a href=''>
+        <img src={logo} alt='logo' className='h-6 ' />
+      </a>
+    </div>
+  );
+}
