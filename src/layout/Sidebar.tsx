@@ -1,4 +1,4 @@
-import { AiOutlineHome as Home } from "react-icons/ai";
+import { AiOutlineHome as Home, AiOutlineTrophy } from "react-icons/ai";
 import {
   MdOutlineSubscriptions as Subscriptions,
   MdOutlineVideoLibrary as Library,
@@ -6,14 +6,19 @@ import {
   MdOutlineWatchLater,
   MdOutlinePlaylistPlay,
 } from "react-icons/md";
+import { IoFlameOutline, IoRadioOutline } from "react-icons/io5";
+import { LuLibrary, LuMusic2, LuGamepad2, LuShirt, LuPodcast } from "react-icons/lu";
+import { GoVideo } from "react-icons/go";
+import { RiHistoryFill } from "react-icons/ri";
+import { FiShoppingBag } from "react-icons/fi";
+import { BsFilm, BsNewspaper } from "react-icons/bs";
+import { HiOutlineLightBulb } from "react-icons/hi";
+
 import SmallSidebarItem from "../components/SmallSidebarItem";
 import LargeSidebarSection from "../components/LargeSidebarSection";
 import LargeSidebarItem from "../components/LargeSidebarItem";
-import { LuLibrary } from "react-icons/lu";
-import { RiHistoryFill } from "react-icons/ri";
-import { GoVideo } from "react-icons/go";
-import { playlists, subscriptions } from "../data/sidebar";
 
+import { playlists, subscriptions } from "../data/sidebar";
 const Sidebar = () => {
   return (
     <>
@@ -63,6 +68,19 @@ const Sidebar = () => {
           ))}
         </LargeSidebarSection>
         <hr />
+        <LargeSidebarSection title='Explore'>
+          <LargeSidebarItem IconOrImgUrl={IoFlameOutline} title='Trending' url='/trending' />
+          <LargeSidebarItem IconOrImgUrl={FiShoppingBag} title='Shopping' url='/shopping' />
+          <LargeSidebarItem IconOrImgUrl={LuMusic2} title='Music' url='/music' />
+          <LargeSidebarItem IconOrImgUrl={BsFilm} title='Movies & TV' url='/movies-tv' />
+          <LargeSidebarItem IconOrImgUrl={IoRadioOutline} title='Live' url='/live' />
+          <LargeSidebarItem IconOrImgUrl={LuGamepad2} title='Gaming' url='/gaming' />
+          <LargeSidebarItem IconOrImgUrl={BsNewspaper} title='News' url='/news' />
+          <LargeSidebarItem IconOrImgUrl={AiOutlineTrophy} title='Sports' url='/sports' />
+          <LargeSidebarItem IconOrImgUrl={HiOutlineLightBulb} title='Learning' url='/learning' />
+          <LargeSidebarItem IconOrImgUrl={LuShirt} title='Fashion & Beauty' url='/fashion-beauty' />
+          <LargeSidebarItem IconOrImgUrl={LuPodcast} title='Podcasts' url='/podcasts' />
+        </LargeSidebarSection>
       </aside>
     </>
   );
