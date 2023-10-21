@@ -3,13 +3,13 @@ import { buttonStyles } from "./Button";
 import { ElementType } from "react";
 
 type LargeSidebarItemProps = {
-  Icon: ElementType;
+  IconOrImgUrl: ElementType | string;
   title: string;
   url: string;
   isActive?: boolean;
 };
 
-function LargeSidebarItem({ Icon, title, url, isActive = false }: LargeSidebarItemProps) {
+function LargeSidebarItem({ IconOrImgUrl, title, url, isActive = false }: LargeSidebarItemProps) {
   return (
     <a
       href={url}
@@ -19,7 +19,11 @@ function LargeSidebarItem({ Icon, title, url, isActive = false }: LargeSidebarIt
           isActive ? "font-bold bg-neutral-100 hover:bg-secondary" : undefined
         }`
       )}>
-      <Icon className='w-5 h-5' />
+      {typeof IconOrImgUrl === "string" ? (
+        <img src={IconOrImgUrl} className='w-6 h-6 rounded-full' />
+      ) : (
+        <IconOrImgUrl className='w-6 h-6' />
+      )}
       <div className='text-sm font-normal whitespace-nowrap overflow-hidden text-ellipsis'>
         {title}
       </div>

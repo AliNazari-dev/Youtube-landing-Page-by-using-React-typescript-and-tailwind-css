@@ -12,7 +12,7 @@ import LargeSidebarItem from "../components/LargeSidebarItem";
 import { LuLibrary } from "react-icons/lu";
 import { RiHistoryFill } from "react-icons/ri";
 import { GoVideo } from "react-icons/go";
-import { playlists } from "../data/sidebar";
+import { playlists, subscriptions } from "../data/sidebar";
 
 const Sidebar = () => {
   return (
@@ -27,22 +27,38 @@ const Sidebar = () => {
       </aside>
       <aside className='w-56 lg:sticky absolute top-0 overflow-y-auto scrollbar-hidden pb-4 gap-2 flex flex-col'>
         <LargeSidebarSection>
-          <LargeSidebarItem isActive Icon={Home} title='Home' url='/' />
-          <LargeSidebarItem isActive Icon={Subscriptions} title='Subscriptions' url='/' />
+          <LargeSidebarItem isActive IconOrImgUrl={Home} title='Home' url='/' />
+          <LargeSidebarItem isActive IconOrImgUrl={Subscriptions} title='Subscriptions' url='/' />
         </LargeSidebarSection>
         <hr />
         <LargeSidebarSection visibleItemCount={5}>
-          <LargeSidebarItem isActive Icon={LuLibrary} title='Library' url='/' />
-          <LargeSidebarItem isActive Icon={RiHistoryFill} title='History' url='/' />
-          <LargeSidebarItem isActive Icon={GoVideo} title='Your Video' url='/' />
-          <LargeSidebarItem isActive Icon={MdOutlineWatchLater} title='Watch Later' url='/' />
+          <LargeSidebarItem isActive IconOrImgUrl={LuLibrary} title='Library' url='/' />
+          <LargeSidebarItem isActive IconOrImgUrl={RiHistoryFill} title='History' url='/' />
+          <LargeSidebarItem isActive IconOrImgUrl={GoVideo} title='Your Video' url='/' />
+          <LargeSidebarItem
+            isActive
+            IconOrImgUrl={MdOutlineWatchLater}
+            title='Watch Later'
+            url='/'
+          />
           {playlists.map((playlist) => (
             <LargeSidebarItem
               key={playlist.id}
               isActive
-              Icon={MdOutlinePlaylistPlay}
+              IconOrImgUrl={MdOutlinePlaylistPlay}
               title={playlist.name}
               url={`/playlist?list=${playlist.id}`}
+            />
+          ))}
+        </LargeSidebarSection>
+        <hr />
+        <LargeSidebarSection title='Subscriptions'>
+          {subscriptions.map((subscription) => (
+            <LargeSidebarItem
+              url={`/@${subscription.id}`}
+              key={subscription.id}
+              IconOrImgUrl={subscription.imgUrl}
+              title={subscription.channelName}
             />
           ))}
         </LargeSidebarSection>
